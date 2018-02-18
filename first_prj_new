@@ -1,0 +1,17 @@
+#!/bin/bash
+
+dir_for_back_up=$1 
+expansion=$2
+dir_for_tar=$3
+cd $HOME
+touch for_trash.tmp
+echo "for_trash start" >for_trash.tmp
+mkdir $dir_for_back_up 2>>for_trash.tmp
+find_files=$(find . -name "*.$expansion")
+cp $find_files $dir_for_back_up 2>>for_trash.tmp
+
+tar -cvf $dir_for_tar.tar $dir_for_back_up >>for_trash.tmp
+
+rm for_trash.tmp
+
+echo Done
