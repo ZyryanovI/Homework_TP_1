@@ -1,0 +1,14 @@
+#!/bin/bash
+
+dir_for_back_up=$1 
+expansion=$2
+dir_for_tar=$3
+cd $HOME
+mkdir $dir_for_back_up
+find_files=$(find . -name "*.$expansion")
+cp $find_files $dir_for_back_up
+
+tar -cvf $dir_for_tar.tar $dir_for_back_up
+
+
+echo Done
